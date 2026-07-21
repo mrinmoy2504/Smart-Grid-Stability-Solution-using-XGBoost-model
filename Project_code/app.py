@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -23,16 +24,19 @@ def features(data_df):
 
 @st.cache_resource
 def load_all_assets():
-    scaler = joblib.load('scaler.pkl')
-    lr = joblib.load('lr_model.pkl')
-    rf = joblib.load('best_rf_model.pkl')
-    xgb_m = joblib.load('best_xgb_model.pkl')
-    X_test_s, y_test_s, feature_names = joblib.load('test_data.pkl')
-    return scaler, lr, rf, xgb_m, X_test_s, y_test_s, feature_names
+    # Dynamically locate the folder where app.py lives (Project_code/)
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    
+    scaler = joblib.load(os.path.join(BASE_DIR, 'scaler.pkl'))
+    lr = joblib.load(os.path.join(BASE_DIR, 'lr_model.pkl'))
+    rf = joblib.load(os.path.join(BASE_DIR, 'best_rf_model.pkl'))
+    xgb_m = joblib.load(os.path.join(BASE_DIR, 'best_xgb_model.pkl'))
+    X_test_s, y_test_s, feature_names = joblib.load(os.path.join(BASE_DIR, 'test_data.pkl'))
+    
+    return scaler, lr, rf, xgb_m, X_test_s, y_test_s, feature_names 
+
 
 scaler, lr_model, final_rf_model, final_xgb_model, X_test_scaled, y_test, feature_cols = load_all_assets()
-
-
 
 # STREAMLIT DASHBOARD UI 
 # Sidebar Interactive Controls
