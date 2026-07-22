@@ -20,7 +20,7 @@ Access the deployed interactive web dashboard here:
   * **Random Forest Classifier** (Bagging ensemble)
   * **XGBoost Classifier** (eXtreme Gradient Boosting - Selected for best accuracy/AUC)
 * **Performance Evaluation**: Features ROC-AUC curve visualizations and evaluation metrics comparing model performances.
-* **Modular Codebase**: Pipeline functions separated cleanly inside the `project_code/` directory for maintainability.
+* **Modular Codebase**: Pipeline functions separated cleanly inside the `Project_code/` directory for maintainability.
 * **Interactive UI**: Built with Streamlit to enable real-time user input tuning and instant grid stability classification.
 
 ---
